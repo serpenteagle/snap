@@ -23,10 +23,10 @@ export const calcTargets = blocks => [
 
 /**
  * The main Snap class.
- * @param {Object} config
- * @param {Array} blocks
+ * @param {Object} config - The configuration object.
+ * @param {Array} blocks - The blocks to add to the instance.
  */
-const Snap = class {
+class Snap {
   constructor(config = {}, blocks = []) {
     this._blocks = blocks;
 
@@ -46,6 +46,15 @@ const Snap = class {
    */
   remove(blockId) {
     this._blocks = this._blocks.filter(block => block.id !== blockId);
+  }
+
+  /**
+   * Moves an existing block and updates its position value.
+   * @param {String} blockId - The id of the block.
+   * @param {Array} newPosition - The new position of the block.
+   */
+  move(blockId, newPosition) {
+    this._blocks.find(block => blockId === block.id).position = newPosition;
   }
 
   /**
@@ -107,6 +116,6 @@ const Snap = class {
       yMatch === undefined ? null : yMatch
     ];
   }
-};
+}
 
 export default Snap;

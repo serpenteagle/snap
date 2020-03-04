@@ -31,7 +31,12 @@ Snap is a library designed to help compute 2d rectangular object snapping. You c
 
 ### Other Methods
 
-- Revove an object
+- Remove a block
   ```
   snap.remove("blockId");
   ```
+- Move an block
+  ```
+  snap.move("blockId", [100, 200]);
+  ```
+  **See [the documentation](./DOCUMENTATION.md) for more details.**

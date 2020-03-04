@@ -56,3 +56,10 @@ test("Proposing the 2nd block to position (15, 25) should return a target match 
 test("Proposing the 2nd block to position (11, 11) should return a target match of 10 in the x and y directions, since the tolerance defaults to 10.", () => {
   expect(snap.propose("2", [11, 11])).toEqual([10, 10]);
 });
+
+/*----------------------------------------------------*/
+
+test("Moving the first block to a new position should update its value in the instance.", () => {
+  snap.move("1", [10, 15]);
+  expect(snap.getBlocks().find(block => block.id === "1").position).toEqual([10, 15]);
+})
