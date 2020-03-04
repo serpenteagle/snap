@@ -1,3 +1,5 @@
+import inRange from "lodash/inRange";
+
 export const calcBounds = direction => ({ size, position }) => {
   const index = direction === "x" ? 0 : 1;
   const bounds = [
@@ -27,6 +29,8 @@ export const calcTargets = blocks => [
 const Snap = class {
   constructor(config = {}, blocks = []) {
     this._blocks = blocks;
+
+    this._tolerance = config.tolerance === undefined ? 10 : config.tolerance;
   }
 
   /**
@@ -52,7 +56,7 @@ const Snap = class {
   }
 
   /**
-   * Proposes a new position for a block and returns the first target match in both the x and y direction. 
+   * Proposes a new position for a block and returns the first target match in both the x and y direction.
    * @param {String} blockId - The id of the block you want to propose a position change to.
    * @param {Array} newPosition - The new position you want to propose.
    * @returns {Array} An array containing the first target match in both the x and y directions.
@@ -72,10 +76,30 @@ const Snap = class {
     );
 
     const xMatch = xTargets.find(
-      target => target === xBounds[0] || target === xBounds[1]
+      target =>
+        inRange(
+          xBounds[0],
+          target - this._tolerance / 2,
+          target + this._tolerance / 2 + 1
+        ) ||
+        inRange(
+          xBounds[1],
+          target - this._tolerance / 2,
+          target + this._tolerance / 2 + 1
+        )
     );
-    const yMatch = yTargets.find(
-      target => target === yBounds[0] || target === yBounds[1]
+    const yMatch = xTargets.find(
+      target =>
+        inRange(
+          yBounds[0],
+          target - this._tolerance / 2,
+          target + this._tolerance / 2 + 1
+        ) ||
+        inRange(
+          yBounds[1],
+          target - this._tolerance / 2,
+          target + this._tolerance / 2 + 1
+        )
     );
 
     return [

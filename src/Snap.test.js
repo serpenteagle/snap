@@ -52,3 +52,7 @@ test("The snap instance should now only have 2 blocks; the removed block should 
 test("Proposing the 2nd block to position (15, 25) should return a target match of 10 in the x direction", () => {
   expect(snap.propose("2", [15, 25])).toEqual([10, null]);
 });
+
+test("Proposing the 2nd block to position (11, 11) should return a target match of 10 in the x and y directions, since the tolerance defaults to 10.", () => {
+  expect(snap.propose("2", [11, 11])).toEqual([10, 10]);
+});
