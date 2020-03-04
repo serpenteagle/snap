@@ -33,5 +33,5 @@ Snap is a library designed to help compute 2d rectangular object snapping. You c
 
 - Revove an object
   ```
-  snap.remove("objectId");
+  snap.remove("blockId");
   ```
