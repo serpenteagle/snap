@@ -97,7 +97,7 @@ class Snap {
           target + this._tolerance / 2
         )
     );
-    const yMatch = xTargets.find(
+    const yMatch = yTargets.find(
       target =>
         inRange(
           yBounds[0],
