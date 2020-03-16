@@ -89,12 +89,12 @@ class Snap {
         inRange(
           xBounds[0],
           target - this._tolerance / 2,
-          target + this._tolerance / 2 + 1
+          target + this._tolerance / 2
         ) ||
         inRange(
           xBounds[1],
           target - this._tolerance / 2,
-          target + this._tolerance / 2 + 1
+          target + this._tolerance / 2
         )
     );
     const yMatch = xTargets.find(
@@ -102,12 +102,12 @@ class Snap {
         inRange(
           yBounds[0],
           target - this._tolerance / 2,
-          target + this._tolerance / 2 + 1
+          target + this._tolerance / 2
         ) ||
         inRange(
           yBounds[1],
           target - this._tolerance / 2,
-          target + this._tolerance / 2 + 1
+          target + this._tolerance / 2
         )
     );
 
